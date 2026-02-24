@@ -1,0 +1,104 @@
+╔════════════════════════════════════════════════════════════════════════════╗
+║           🔍 COMO ENCONTRAR O ERRO NOS LOGS DO RAILWAY                     ║
+╚════════════════════════════════════════════════════════════════════════════╝
+
+PASSO 1: ABRIR OS LOGS
+
+1. Acesse: https://railway.app/dashboard
+2. Clique no projeto: risk-compass
+3. Clique na aba: "Deployments"
+4. Clique no deploy mais recente (que falhou)
+5. Você verá os logs em tempo real
+
+
+PASSO 2: ENCONTRAR O ERRO
+
+Os logs aparecem em várias cores:
+
+🟢 Linhas verdes = Informações normais (geralmente no início)
+   Exemplo: "Fetching files from git repository..."
+
+🟡 Linhas amarelas = Avisos (não são erros, mas alertas)
+   Exemplo: "WARN: deprecated package"
+
+🔴 Linhas vermelhas = ERROS (isso é o que você procura!)
+   Exemplo: "ERROR: Cannot find module..."
+
+⚫ Linhas brancas = Atividades do build
+   Exemplo: "Building NestJS application..."
+
+
+PASSO 3: PROCURE POR ESTAS PALAVRAS-CHAVE
+
+Se ver alguma dessas linhas, é um problema:
+
+❌ "Error"
+❌ "Failed"
+❌ "Cannot find"
+❌ "ERR!"
+❌ "ERROR"
+❌ "ENOENT"
+❌ "ERESOLVE"
+
+
+PASSO 4: COPIE A MENSAGEM DE ERRO
+
+Quando encontrar (geralmente no final dos logs):
+
+1. Clique na linha vermelha/amarela com erro
+2. Copie TODA a mensagem (pode ter várias linhas)
+3. Mande para mim
+
+
+════════════════════════════════════════════════════════════════════════════════
+
+ERROS MAIS COMUNS (SOLUÇÃO RÁPIDA):
+
+🔴 "Cannot find module '@nestjs/core'"
+   → Solução: npm install não funcionou
+   → Ação: Clique "Redeploy" novamente
+
+🔴 "ENOENT: no such file or directory 'prisma/schema.prisma'"
+   → Solução: Arquivo Prisma não está no lugar certo
+   → Ação: Verifique se backend/prisma/schema.prisma existe
+
+🔴 "Unexpected token '}' in JSON"
+   → Solução: Erro no package.json ou arquivo de config
+   → Ação: Verifique syntax JSON (sem aspas faltando)
+
+🔴 "Command failed: npm run build"
+   → Solução: TypeScript não compila
+   → Ação: Execute `npm run build` no seu computador para testar
+
+🔴 "Port 3001 is already in use"
+   → Solução: Outra aplicação usando a porta
+   → Ação: Mude PORT para 8080 no Railway
+
+🔴 "Unexpected identifier 'class'"
+   → Solução: Arquivo .ts está sendo tratado como .js
+   → Ação: Verifique se tsconfig.json está correto
+
+════════════════════════════════════════════════════════════════════════════════
+
+JÁ CORRIGIMOS:
+
+✅ Adicionado railway.json com build e start commands
+✅ Adicionado Procfile para clareza
+✅ Enviado para GitHub automaticamente
+
+════════════════════════════════════════════════════════════════════════════════
+
+PRÓXIMAS AÇÕES:
+
+1. Clique "Redeploy" no Railway
+2. Aguarde ~3-5 minutos
+3. Se der erro, procure a linha vermelha nos logs
+4. Copie e cole aqui
+5. Resolvemos juntos!
+
+════════════════════════════════════════════════════════════════════════════════
+
+💡 DICA: Você pode fazer scroll nos logs para ver mais contexto!
+Use as setas para cima/baixo ou a scrollbar do lado direito.
+
+════════════════════════════════════════════════════════════════════════════════
