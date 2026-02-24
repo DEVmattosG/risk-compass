@@ -2,10 +2,10 @@
   "name": "risk-compass",
   "version": "1.0.0",
   "description": "Risk management application",
-  "main": "backend/dist/main.js",
+  "main": "backend/dist/src/main.js",
   "scripts": {
     "build": "cd backend && npm install && npm run build",
-    "start": "cd backend && npm run start",
+    "start": "cd backend && node dist/src/main.js",
     "dev": "cd backend && npm run start:dev"
   },
   "engines": {

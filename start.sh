@@ -1,3 +1,3 @@
 #!/bin/bash
 cd backend
-npm run start
+node dist/src/main.js

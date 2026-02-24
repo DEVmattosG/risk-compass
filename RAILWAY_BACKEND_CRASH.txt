@@ -1,0 +1,80 @@
+╔════════════════════════════════════════════════════════════════════════════╗
+║           🔍 ENCONTRAR POR QUE O BACKEND ESTÁ CRASHANDO                    ║
+╚════════════════════════════════════════════════════════════════════════════╝
+
+PASSO 1: VER OS LOGS DE ERRO
+
+1. Acesse o Railway: https://railway.app/dashboard
+2. Selecione o projeto: risk-compass
+3. Clique na aba "Deployments"
+4. Clique no deploy (verde COMPLETED)
+5. Clique em "View logs"
+6. Scroll para O FINAL dos logs (onde está o erro)
+
+
+PASSO 2: PROCURE POR ESTAS MENSAGENS:
+
+🔴 Linha vermelha com "Error"
+🔴 Linha vermelha com "Cannot"
+🔴 Linha vermelha com "ENOENT"
+🔴 Linha vermelha com "listening"
+🔴 Última linha do log (geralmente onde o erro acontece)
+
+
+PASSO 3: COPIE A MENSAGEM EXATA
+
+Quando achar, copie a linha vermelha/error completa.
+Pode ser algo como:
+
+❌ "Error: Cannot find module 'prisma'"
+❌ "Error: listen EADDRINUSE: address already in use :::3001"
+❌ "TypeError: Cannot read property 'xxx' of undefined"
+❌ "Error: Connection refused to database"
+
+
+════════════════════════════════════════════════════════════════════════════════
+
+CAUSAS MAIS COMUNS:
+
+1️⃣ DATABASE_URL incorreta
+   Erro: "Error: ENOENT: no such file or directory 'dev.db'"
+   Solução: DATABASE_URL deve ser: file:./dev.db
+
+2️⃣ PORT já em uso
+   Erro: "EADDRINUSE: address already in use :::3001"
+   Solução: Mude PORT para 8080 ou 3000
+
+3️⃣ Variável de ambiente faltando
+   Erro: "TypeError: Cannot read property 'xxx' of undefined"
+   Solução: Verifique se TODAS as 7 variáveis existem
+
+4️⃣ Node version mismatch
+   Erro: "Unexpected token 'x' in JSON"
+   Solução: Railway usa Node 18+, deve estar ok
+
+5️⃣ Arquivo Prisma corrompido
+   Erro: "ENOENT: no such file or directory 'prisma/schema.prisma'"
+   Solução: Verifique backend/prisma/schema.prisma existe
+
+
+════════════════════════════════════════════════════════════════════════════════
+
+COMO VER OS LOGS COMPLETOS:
+
+No Railway:
+1. Deployments → Seu deploy
+2. Veja os 3 pontos "..." no canto superior direito
+3. Clique "View raw logs"
+4. Scroll até o final para ver onde crashou
+
+
+════════════════════════════════════════════════════════════════════════════════
+
+PRÓXIMA AÇÃO:
+
+👉 Abra o Railway agora
+👉 Clique em "View logs"
+👉 Procure a linha vermelha no final
+👉 Copie e cole aqui a mensagem de erro exata
+
+════════════════════════════════════════════════════════════════════════════════
