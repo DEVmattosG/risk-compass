@@ -1,0 +1,92 @@
+╔════════════════════════════════════════════════════════════════════════════╗
+║          ✅ ERRO RESOLVIDO - PRÓXIMO REDEPLOY NO RAILWAY                  ║
+╚════════════════════════════════════════════════════════════════════════════╝
+
+PROBLEMA IDENTIFICADO:
+❌ "Error: Cannot find module '/app/backend/dist/main.js'"
+
+CAUSA:
+O caminho do arquivo principal estava errado no Procfile.
+NestJS compila para: dist/src/main.js (não dist/main.js)
+
+SOLUÇÃO APLICADA:
+✅ Corrigido Procfile: web: node dist/src/main.js
+✅ Corrigido package.json: main paths
+✅ Corrigido start.sh: caminho exato
+✅ Corrigido main.ts: CORS config mais robusta
+✅ Enviado para GitHub
+
+════════════════════════════════════════════════════════════════════════════════
+
+🚀 AGORA VOCÊ PRECISA FAZER O REDEPLOY NO RAILWAY:
+
+OPÇÃO 1: REDEPLOY AUTOMÁTICO (SE ESTIVER ATIVO)
+→ Railway detecta o novo commit automaticamente
+→ Aguarde ~2-3 minutos para rebuild
+
+OPÇÃO 2: REDEPLOY MANUAL
+1. Acesse: https://railway.app/dashboard
+2. Selecione: risk-compass
+3. Clique em "Deployments"
+4. Clique nos "..." (três pontos)
+5. Selecione "Trigger new deploy"
+6. Aguarde ~2-3 minutos
+
+
+════════════════════════════════════════════════════════════════════════════════
+
+ENQUANTO AGUARDA:
+
+Verifique que estas variáveis estão corretas no Railway:
+
+✅ DATABASE_URL = file:./dev.db
+✅ PORT = 3001
+✅ NODE_ENV = production
+✅ JWT_ACCESS_SECRET = [valor longo]
+✅ JWT_REFRESH_SECRET = [valor longo]
+✅ COOKIE_SECRET = [valor longo]
+✅ CORS_ORIGIN = https://seu-vercel-url.vercel.app
+
+
+════════════════════════════════════════════════════════════════════════════════
+
+SINAIS DE SUCESSO:
+
+✅ Deploy mostra "COMPLETED" (verde)
+✅ Logs finais mostram: "Nest application successfully started"
+✅ URL do Railway fica acessível (verde)
+✅ Conseguir fazer GET em: https://seu-railway-url.railway.app/risks
+
+
+════════════════════════════════════════════════════════════════════════════════
+
+SE DER ERRO NOVAMENTE:
+
+Erro: "Cannot find module"
+→ Redeploy novamente (Railway às vezes não atualiza na primeira)
+
+Erro: "listen EADDRINUSE"
+→ Mude PORT para 8080 e redeploy
+
+Erro: Timeout
+→ Aguarde um pouco mais, NestJS pode levar tempo para compilar
+
+
+════════════════════════════════════════════════════════════════════════════════
+
+PRÓXIMO PASSO (APÓS SUCESSO):
+
+1. Copie a URL do Railway (ex: https://risk-compass-xyz.railway.app)
+2. Vá para Vercel: https://vercel.com/dashboard
+3. Selecione: risk-compass
+4. Settings → Environment Variables
+5. NEXT_PUBLIC_API_BASE_URL = [URL do Railway]
+6. Redeploy no Vercel
+7. Pronto! Sistema 100% online! 🎉
+
+
+════════════════════════════════════════════════════════════════════════════════
+
+Começou o redeploy? Manda aí quando terminar! 🚀
+
+════════════════════════════════════════════════════════════════════════════════

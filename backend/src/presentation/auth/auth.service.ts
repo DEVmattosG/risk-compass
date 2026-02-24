@@ -29,8 +29,9 @@ export class AuthService {
     const user = await this.validateUser(email, password);
     const payload = { sub: user.id, role: user.role };
     const accessToken = this.jwt.sign(payload);
+    const refreshSecret = process.env.JWT_REFRESH_SECRET || 'dev-refresh-key-please-change-in-production';
     const refreshToken = this.jwt.sign(payload, {
-      secret: process.env.JWT_REFRESH_SECRET,
+      secret: refreshSecret,
       expiresIn: '7d',
     });
 
@@ -39,8 +40,9 @@ export class AuthService {
 
   async refresh(refreshToken: string) {
     try {
+      const refreshSecret = process.env.JWT_REFRESH_SECRET || 'dev-refresh-key-please-change-in-production';
       const payload = this.jwt.verify(refreshToken, {
-        secret: process.env.JWT_REFRESH_SECRET,
+        secret: refreshSecret,
       }) as any;
       const accessToken = this.jwt.sign({ sub: payload.sub, role: payload.role });
       return { accessToken };

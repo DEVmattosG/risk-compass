@@ -5,9 +5,13 @@ import { ExtractJwt, Strategy } from 'passport-jwt';
 @Injectable()
 export class JwtStrategy extends PassportStrategy(Strategy) {
   constructor() {
+    const secret = process.env.JWT_ACCESS_SECRET || 'dev-secret-key-please-change-in-production';
+    if (!process.env.JWT_ACCESS_SECRET) {
+      console.warn('⚠️ WARNING: JWT_ACCESS_SECRET not set, using default dev key');
+    }
     super({
       jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
-      secretOrKey: process.env.JWT_ACCESS_SECRET,
+      secretOrKey: secret,
     });
   }
 
