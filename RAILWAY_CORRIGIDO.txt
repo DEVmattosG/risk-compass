@@ -1,0 +1,133 @@
+╔════════════════════════════════════════════════════════════════════════════╗
+║              ✅ ERRO RAILWAY RESOLVIDO - PRÓXIMOS PASSOS                   ║
+╚════════════════════════════════════════════════════════════════════════════╝
+
+PROBLEMA IDENTIFICADO:
+❌ "Error creating build plan with Railpack"
+
+CAUSA:
+O Railway não conseguiu detectar como fazer o build do seu projeto NestJS.
+
+SOLUÇÃO APLICADA:
+✅ Criei arquivo: backend/railway.json
+✅ Criei arquivo: backend/.railwayignore
+✅ Configurei o builder correto (nixpacks)
+✅ Enviado para GitHub automaticamente
+
+════════════════════════════════════════════════════════════════════════════════
+
+AGORA FAÇA ISSO NO RAILWAY:
+
+OPÇÃO 1: REDEPLOY AUTOMÁTICO (RECOMENDADO)
+
+1. Acesse: https://railway.app/dashboard
+2. Selecione o projeto: risk-compass
+3. Você verá uma notificação de novo commit
+4. Clique em "Redeploy"
+5. Aguarde o deploy terminar
+
+Tempo estimado: 2-3 minutos
+
+
+OPÇÃO 2: SE NÃO HOUVER REDEPLOY AUTOMÁTICO
+
+1. Acesse: https://railway.app/dashboard
+2. Selecione o projeto: risk-compass
+3. Clique em "Settings"
+4. Procure por "Auto-Deploy" e ative
+5. Faça um novo commit no GitHub ou clique em "Trigger Deploy"
+
+
+OPÇÃO 3: MANUAL (SE NADA ACIMA FUNCIONAR)
+
+1. Acesse o Railway
+2. Clique em "Deployments"
+3. Clique no botão "..." (três pontos) no deploy antigo
+4. Selecione "Trigger new deploy"
+
+════════════════════════════════════════════════════════════════════════════════
+
+ENQUANTO AGUARDA O DEPLOY:
+
+Verifique se TODAS essas variáveis estão corretas no Railway:
+
+📋 Database
+   DATABASE_URL = file:./dev.db
+   ⬜ Verifique (sem espaços extras)
+
+📋 Server
+   PORT = 3001
+   NODE_ENV = production
+   ⬜ Verifique
+
+📋 JWT & Cookies
+   JWT_ACCESS_SECRET = [valor longo de caracteres aleatórios]
+   JWT_REFRESH_SECRET = [valor longo de caracteres aleatórios]
+   COOKIE_SECRET = [valor longo de caracteres aleatórios]
+   ⬜ Verifique (devem ser valores diferentes e longos)
+
+📋 CORS
+   CORS_ORIGIN = https://[sua-url-vercel].vercel.app
+   ⬜ Verifique (com https:// e exato como no Vercel)
+
+════════════════════════════════════════════════════════════════════════════════
+
+SINAIS DE SUCESSO:
+
+✅ O deploy completar com status "SUCCESS"
+✅ Ver a URL da aplicação (ex: https://risk-compass-xyz.railway.app)
+✅ Conseguir acessar a URL e não dar erro 500
+✅ Os logs mostrarem "Nest application successfully started"
+
+════════════════════════════════════════════════════════════════════════════════
+
+SE AINDA DER ERRO:
+
+Erro comum: "Cannot find module @prisma/client"
+→ Railway instala dependências automaticamente
+→ Se persistir: Tente redeploy ou reinicie o projeto
+
+Erro: "Port 3001 already in use"
+→ Railway pode estar usando PORT como 3000 ou 8000
+→ Tente mudar PORT para 8000 e redeploy
+
+Erro: "Build timeout"
+→ Railway pode ter cancelado por demora
+→ Tente redeploy novamente (pode levar mais tempo)
+
+════════════════════════════════════════════════════════════════════════════════
+
+PRÓXIMAS ETAPAS (APÓS DEPLOY SUCEDER):
+
+1. Copie a URL do Railway (ex: https://risk-compass-xyz.railway.app)
+2. Vá para Vercel: https://vercel.com/dashboard
+3. Selecione o projeto: risk-compass
+4. Settings → Environment Variables
+5. Adicione: NEXT_PUBLIC_API_BASE_URL = [URL do Railway]
+6. Clique "Save" e depois "Redeploy"
+7. Aguarde ~3 minutos
+
+════════════════════════════════════════════════════════════════════════════════
+
+✨ RESUMO:
+
+O que foi feito:
+✅ Adicionado railway.json com configuração correta
+✅ Adicionado .railwayignore para evitar cache
+✅ Enviado para GitHub
+
+O que você precisa fazer:
+1. Ir no Railway
+2. Clicar "Redeploy" ou aguardar auto-deploy
+3. Copiar a URL quando terminar
+4. Adicionar em Vercel (NEXT_PUBLIC_API_BASE_URL)
+5. Redeploy no Vercel
+
+Tempo total: ~5 minutos
+
+════════════════════════════════════════════════════════════════════════════════
+
+💡 DICA: Se o deploy falhar novamente, os logs do Railway vão mostrar
+exatamente qual é o erro. Mande para mim que resolvemos rapidinho!
+
+════════════════════════════════════════════════════════════════════════════════
