@@ -1,0 +1,36 @@
+name: Deploy to Railway (Backend)
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'backend/**'
+      - '.github/workflows/deploy-backend.yml'
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - uses: actions/checkout@v3
+      
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+      
+      - name: Install dependencies
+        run: |
+          cd backend
+          npm ci
+      
+      - name: Build
+        run: |
+          cd backend
+          npm run build
+      
+      - name: Deploy to Railway
+        run: |
+          npm install -g @railway/cli
+          railway deploy
+        env:
+          RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
