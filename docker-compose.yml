@@ -1,0 +1,49 @@
+version: '3.9'
+
+services:
+  db:
+    image: postgres:16-alpine
+    container_name: risk-compass-db
+    restart: always
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-riskcompass}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-change_me}
+      POSTGRES_DB: ${POSTGRES_DB:-riskcompass}
+    ports:
+      - '5432:5432'
+    volumes:
+      - db_data:/var/lib/postgresql/data
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: ../Dockerfile.backend
+    container_name: risk-compass-backend
+    restart: always
+    env_file:
+      - ./config/.env.example
+    environment:
+      DATABASE_URL: postgres://${POSTGRES_USER:-riskcompass}:${POSTGRES_PASSWORD:-change_me}@db:5432/${POSTGRES_DB:-riskcompass}
+    depends_on:
+      - db
+    ports:
+      - '3001:3001'
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: ../Dockerfile.frontend
+    container_name: risk-compass-frontend
+    restart: always
+    env_file:
+      - ./config/.env.example
+    environment:
+      NEXT_PUBLIC_API_BASE_URL: http://backend:3001
+    depends_on:
+      - backend
+    ports:
+      - '3000:3000'
+
+volumes:
+  db_data:
+

@@ -1,0 +1,14 @@
+node_modules
+dist
+.turbo
+.next
+.DS_Store
+coverage
+*.log
+*.tsbuildinfo
+/.env
+/.env.*
+/backend/.env
+/frontend/.env
+/prisma/dev.db
+/.husky/_/*

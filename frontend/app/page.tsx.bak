@@ -1,0 +1,33 @@
+import { RiskMatrix } from '../components/RiskMatrix';
+import { RiskSummaryCards } from '../components/RiskSummaryCards';
+
+export default function DashboardPage() {
+  const mock = {
+    total: 12,
+    critical: 3,
+    byCategory: [
+      { category: 'OPERACIONAL', count: 5 },
+      { category: 'FINANCEIRO', count: 3 },
+      { category: 'ESTRATÉGICO', count: 2 },
+      { category: 'COMPLIANCE', count: 2 },
+    ],
+    byStatus: [
+      { status: 'Aberto', count: 6 },
+      { status: 'Mitigado', count: 3 },
+      { status: 'Aceito', count: 2 },
+      { status: 'Transferido', count: 1 },
+    ],
+  };
+
+  return (
+    <div className="space-y-6">
+      <RiskSummaryCards
+        total={mock.total}
+        critical={mock.critical}
+        byCategory={mock.byCategory}
+        byStatus={mock.byStatus}
+      />
+      <RiskMatrix />
+    </div>
+  );
+}
