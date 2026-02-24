@@ -1,0 +1,92 @@
+╔════════════════════════════════════════════════════════════════════════════╗
+║                    ⚡ DEPLOY RÁPIDO - RESUMO 3 PASSOS                      ║
+╚════════════════════════════════════════════════════════════════════════════╝
+
+🎯 OBJETIVO: Colocar seu projeto no ar em produção
+
+⏱️ TEMPO TOTAL: ~9 minutos
+
+════════════════════════════════════════════════════════════════════════════════
+
+✅ PASSO 1: DEPLOY DO FRONTEND NO VERCEL (3 minutos)
+
+1. Acesse: https://vercel.com
+2. Clique: Sign Up with GitHub → Autorize
+3. New Project → Selecione: risk-compass
+4. Configure:
+   - Root Directory: ./frontend
+5. Clique: Deploy ✓
+6. Copie a URL gerada (ex: https://risk-compass.vercel.app)
+
+════════════════════════════════════════════════════════════════════════════════
+
+✅ PASSO 2: DEPLOY DO BACKEND NO RAILWAY (5 minutos)
+
+1. Acesse: https://railway.app
+2. Start a New Project
+3. Deploy from GitHub repo → Selecione: risk-compass
+4. Configure as variáveis de ambiente:
+   
+   DATABASE_URL=file:./dev.db
+   PORT=3001
+   NODE_ENV=production
+   JWT_ACCESS_SECRET=gere-uma-chave-aleatoria-aqui
+   JWT_REFRESH_SECRET=gere-outra-chave-aleatoria-aqui
+   COOKIE_SECRET=gere-mais-uma-chave-aleatoria-aqui
+   CORS_ORIGIN=https://risk-compass.vercel.app [COLE A URL DO VERCEL]
+
+5. Clique: Deploy ✓
+6. Copie a URL gerada (ex: https://seu-backend-xyz.railway.app)
+
+════════════════════════════════════════════════════════════════════════════════
+
+✅ PASSO 3: CONECTAR OS DOIS SISTEMAS (1 minuto)
+
+1. Volte ao Vercel: https://vercel.com/dashboard
+2. Selecione: risk-compass
+3. Settings → Environment Variables
+4. Adicione:
+   Nome: NEXT_PUBLIC_API_BASE_URL
+   Valor: https://seu-backend-xyz.railway.app [COLE A URL DO RAILWAY]
+5. Clique: Save
+6. Clique: Redeploy ✓
+
+════════════════════════════════════════════════════════════════════════════════
+
+🎉 PRONTO! SEU SISTEMA ESTÁ NO AR!
+
+Frontend: https://seu-url.vercel.app
+Backend:  https://seu-backend.railway.app
+
+════════════════════════════════════════════════════════════════════════════════
+
+💡 DICAS IMPORTANTES:
+
+1. Gerar Chaves Aleatórias:
+   → Use: https://generate-random.org/
+   → Ou copie qualquer string longa aleatória
+
+2. Deploy automático:
+   → A cada push no GitHub, ambos redeploy automaticamente
+
+3. Verifique a conexão:
+   → Abra o frontend
+   → Veja se consegue se conectar ao backend
+   → Procure por erros no console
+
+4. Se algo der errado:
+   → Verifique os logs (Vercel: Build logs, Railway: Deployment logs)
+   → Tente redeploy
+   → Revise as variáveis de ambiente
+
+════════════════════════════════════════════════════════════════════════════════
+
+📚 GUIAS COMPLETOS:
+
+Se precisar de mais detalhes:
+- VERCEL_SETUP.txt    → Guia completo do Vercel
+- RAILWAY_SETUP.txt   → Guia completo do Railway
+
+════════════════════════════════════════════════════════════════════════════════
+
+Status: ✅ PRONTO PARA DEPLOY

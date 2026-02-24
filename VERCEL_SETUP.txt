@@ -1,0 +1,104 @@
+╔════════════════════════════════════════════════════════════════════════════╗
+║              🚀 DEPLOY NO VERCEL (FRONTEND) - GUIA PASSO A PASSO          ║
+╚════════════════════════════════════════════════════════════════════════════╝
+
+⏱️ TEMPO: ~3 minutos
+
+════════════════════════════════════════════════════════════════════════════════
+
+PASSO 1: ACESSAR VERCEL
+
+1. Abra: https://vercel.com
+2. Clique: "Sign Up" (canto superior direito)
+3. Selecione: "Continue with GitHub"
+4. Autorize o Vercel a acessar seu GitHub
+
+════════════════════════════════════════════════════════════════════════════════
+
+PASSO 2: CRIAR NOVO PROJETO
+
+1. Clique: "Add New..." (no menu)
+2. Selecione: "Project"
+3. Clique: "Continue with GitHub"
+4. Autorize novamente se pedido
+
+════════════════════════════════════════════════════════════════════════════════
+
+PASSO 3: SELECIONAR REPOSITÓRIO
+
+1. Procure: "risk-compass" na lista
+2. Clique: "Import" (ao lado do nome)
+3. Aguarde o carregamento
+
+════════════════════════════════════════════════════════════════════════════════
+
+PASSO 4: CONFIGURAR O PROJETO
+
+Você verá uma tela com campos para preencher:
+
+✓ Project Name: "risk-compass" (ou outro nome)
+✓ Framework Preset: "Next.js" (deve aparecer automaticamente)
+✓ Root Directory: "./frontend" ← IMPORTANTE!
+
+No campo "Root Directory":
+  1. Clique no campo
+  2. Apague o conteúdo (se houver)
+  3. Digite: ./frontend
+  4. Pressione Enter
+
+════════════════════════════════════════════════════════════════════════════════
+
+PASSO 5: VARIÁVEIS DE AMBIENTE (AGORA SÓ DEIXE EM BRANCO)
+
+Pule as variáveis de ambiente por enquanto.
+
+(Adicionaremos depois quando tivermos a URL do Railway)
+
+════════════════════════════════════════════════════════════════════════════════
+
+PASSO 6: FAZER DEPLOY
+
+1. Clique: "Deploy" (botão grande no fim da página)
+2. Aguarde... (pode levar alguns minutos)
+3. Quando terminar, você verá: "Congratulations! Your site is live!"
+
+════════════════════════════════════════════════════════════════════════════════
+
+PASSO 7: COPIAR URL
+
+Após o deploy bem-sucedido:
+
+1. Você verá uma URL como: https://risk-compass.vercel.app
+2. Copie esta URL
+3. Guarde-a para usar no Railway
+
+════════════════════════════════════════════════════════════════════════════════
+
+✅ FRONTEND DEPLOYADO!
+
+Agora vamos fazer o deploy do Backend no Railway.
+
+Vá para o arquivo: RAILWAY_SETUP.txt
+
+════════════════════════════════════════════════════════════════════════════════
+
+📝 TROUBLESHOOTING:
+
+Erro: "Root Directory: ./frontend not found"
+  → Verifique que o repositório contém a pasta frontend
+  → Tente ./frontend com ponto e barra
+
+Erro: "Build failed"
+  → Volte ao terminal e execute: cd frontend && npm run build
+  → Verifique se tudo compila sem erros
+  → Faça um novo push para o GitHub
+  → Clique "Redeploy" no Vercel
+
+Erro: "Import failed"
+  → Verifique que seu repositório é PUBLIC
+  → Autorize o Vercel novamente
+
+════════════════════════════════════════════════════════════════════════════════
+
+💡 DICA: Durante o deploy do Railway, você precisará da URL do Vercel.
+Deixe essa guia aberta e copie a URL quando o deploy terminar!

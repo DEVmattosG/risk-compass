@@ -1,0 +1,35 @@
+🚀 INSTRUÇÕES PARA CRIAR REPOSITÓRIO NO GITHUB
+
+PASSO 1: Acesse https://github.com/new
+
+PASSO 2: Preencha os campos:
+   ├─ Repository name: risk-compass
+   ├─ Description: Full-stack Risk Management Application with NestJS + Next.js (opcional)
+   ├─ Visibility: Escolha "Public"
+   └─ Deixe todas as outras opções desmarcadas (não adicione README, gitignore ou license)
+
+PASSO 3: Clique em "Create repository"
+
+PASSO 4: COPIE E COLE NO PowerShell:
+
+   cd "c:\Users\guilherme.mattos\Desktop\Teste Cursor"
+   git branch -M main
+   git push -u origin main
+
+PRONTO! 🎉
+
+Se o navegador pedir autenticação, faça login e autorize.
+Se pedir chave SSH, você pode ignorar (use HTTPS).
+
+═══════════════════════════════════════════════════════════════════════════════
+
+⚠️ IMPORTANTE:
+• Certifique-se de que o repositório é PUBLIC
+• Não adicione README, .gitignore ou license (usaremos os nossos)
+• Após criar, volte aqui e execute o comando de push
+
+═══════════════════════════════════════════════════════════════════════════════
+
+Já criou? Então execute no PowerShell:
+   cd "c:\Users\guilherme.mattos\Desktop\Teste Cursor"
+   git push -u origin main

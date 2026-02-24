@@ -1,0 +1,141 @@
+╔════════════════════════════════════════════════════════════════════════════╗
+║                     📋 CHECKLIST DEPLOY INTERATIVO                         ║
+╚════════════════════════════════════════════════════════════════════════════╝
+
+Siga este checklist para garantir que tudo está correto!
+
+════════════════════════════════════════════════════════════════════════════════
+
+PRÉ-REQUISITOS:
+
+☐ Repositório GitHub criado e com código enviado
+  → Verificar: https://github.com/DEVmattosG/risk-compass
+
+☐ Conta Vercel criada
+  → Criar em: https://vercel.com
+
+☐ Conta Railway criada  
+  → Criar em: https://railway.app
+
+════════════════════════════════════════════════════════════════════════════════
+
+FASE 1: DEPLOY VERCEL
+
+☐ 1. Acessei https://vercel.com
+☐ 2. Fiz login com GitHub
+☐ 3. Criei novo projeto (New Project)
+☐ 4. Selecionei: risk-compass
+☐ 5. Defini Root Directory como: ./frontend
+☐ 6. Cliquei Deploy
+☐ 7. Deploy completou com sucesso
+☐ 8. Copiei a URL do Vercel: _______________________
+   (Guardar para o próximo passo!)
+
+Resultado esperado: URL como https://risk-compass.vercel.app
+
+════════════════════════════════════════════════════════════════════════════════
+
+FASE 2: DEPLOY RAILWAY
+
+☐ 1. Acessei https://railway.app
+☐ 2. Fiz login com GitHub
+☐ 3. Criei novo projeto (New Project)
+☐ 4. Selecionei: Deploy from GitHub repo
+☐ 5. Selecionei: risk-compass
+☐ 6. Adicionei as variáveis de ambiente:
+   
+   ☐ DATABASE_URL = file:./dev.db
+   ☐ PORT = 3001
+   ☐ NODE_ENV = production
+   ☐ JWT_ACCESS_SECRET = [gera chave aleatória]
+   ☐ JWT_REFRESH_SECRET = [gera outra chave aleatória]
+   ☐ COOKIE_SECRET = [gera mais uma chave aleatória]
+   ☐ CORS_ORIGIN = [URL do Vercel colada aqui]
+
+☐ 7. Cliquei Deploy
+☐ 8. Deploy completou com sucesso
+☐ 9. Copiei a URL do Railway: _______________________
+   (Guardar para o próximo passo!)
+
+Resultado esperado: URL como https://seu-backend-xyz.railway.app
+
+════════════════════════════════════════════════════════════════════════════════
+
+FASE 3: CONECTAR VERCEL + RAILWAY
+
+☐ 1. Voltei ao Vercel: https://vercel.com/dashboard
+☐ 2. Selecionei projeto: risk-compass
+☐ 3. Fui para: Settings → Environment Variables
+☐ 4. Adicionei variável:
+   ☐ Nome: NEXT_PUBLIC_API_BASE_URL
+   ☐ Valor: [URL do Railway colada aqui]
+☐ 5. Cliquei: Save
+☐ 6. Cliquei: Redeploy
+☐ 7. Redeploy completou com sucesso
+
+════════════════════════════════════════════════════════════════════════════════
+
+FASE 4: TESTES
+
+☐ 1. Acessei: https://seu-url-vercel.vercel.app
+☐ 2. Página carregou corretamente
+☐ 3. Abri o DevTools (F12)
+☐ 4. Fui para a aba Network
+☐ 5. Tentei uma ação que chame a API
+☐ 6. Verifiquei que as requisições chegam ao backend
+☐ 7. Não há erros CORS no console
+
+════════════════════════════════════════════════════════════════════════════════
+
+FASE 5: VERIFICAÇÃO FINAL
+
+☐ Frontend está respondendo: https://seu-url-vercel.vercel.app
+☐ Backend está respondendo: https://seu-backend-xyz.railway.app/risks
+☐ Conexão entre frontend e backend está funcionando
+☐ Não há erros no console do navegador
+☐ Não há erros nos logs do Vercel
+☐ Não há erros nos logs do Railway
+
+════════════════════════════════════════════════════════════════════════════════
+
+RESUMO DAS URLS:
+
+Frontend (Vercel):
+   https://seu-url-vercel.vercel.app
+
+Backend (Railway):
+   https://seu-backend-xyz.railway.app
+
+API do Backend:
+   https://seu-backend-xyz.railway.app/risks
+
+════════════════════════════════════════════════════════════════════════════════
+
+✅ PARABÉNS! SEU PROJETO ESTÁ NO AR!
+
+Se algum item não foi marcado, revise os guias:
+- DEPLOY_RAPIDO.txt    → Guia rápido
+- VERCEL_SETUP.txt     → Guia detalhado Vercel
+- RAILWAY_SETUP.txt    → Guia detalhado Railway
+
+════════════════════════════════════════════════════════════════════════════════
+
+🆘 PROBLEMAS COMUNS:
+
+Erro: "CORS error"
+  → Verifique CORS_ORIGIN no Railway
+  → Verifique NEXT_PUBLIC_API_BASE_URL no Vercel
+
+Erro: "Cannot connect to backend"
+  → Verifique se a URL do Railway está correta
+  → Teste a URL diretamente no navegador
+
+Erro: "Build failed"
+  → Veja os logs de deploy
+  → Verifique o arquivo de erro
+
+Erro: "Connection refused"
+  → Backend pode estar offline
+  → Tente redeploy no Railway
+
+════════════════════════════════════════════════════════════════════════════════

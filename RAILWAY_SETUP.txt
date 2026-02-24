@@ -1,0 +1,204 @@
+╔════════════════════════════════════════════════════════════════════════════╗
+║               🚀 DEPLOY NO RAILWAY (BACKEND) - GUIA PASSO A PASSO         ║
+╚════════════════════════════════════════════════════════════════════════════╝
+
+⏱️ TEMPO: ~5 minutos
+
+════════════════════════════════════════════════════════════════════════════════
+
+IMPORTANTE: Você precisa ter:
+✓ Conta GitHub criada
+✓ Repositório "risk-compass" feito push
+✓ URL do Vercel (do deploy anterior): https://seu-url.vercel.app
+
+════════════════════════════════════════════════════════════════════════════════
+
+PASSO 1: ACESSAR RAILWAY
+
+1. Abra: https://railway.app
+2. Clique: "Start a New Project" (ou "New Project" no dashboard)
+
+════════════════════════════════════════════════════════════════════════════════
+
+PASSO 2: ESCOLHER TIPO DE DEPLOYMENT
+
+Na tela "New Project", você verá várias opções.
+
+Procure por: "Deploy from GitHub repo" (ou "GitHub Repo")
+
+Clique nela.
+
+════════════════════════════════════════════════════════════════════════════════
+
+PASSO 3: AUTORIZAR E SELECIONAR REPOSITÓRIO
+
+1. Clique: "Connect GitHub Account" (se pedido)
+2. Autorize o Railway a acessar seu GitHub
+3. Na lista, procure: "risk-compass"
+4. Clique: "Deploy risk-compass"
+
+════════════════════════════════════════════════════════════════════════════════
+
+PASSO 4: CONFIGURAR O PROJETO
+
+Railway pode fazer perguntas:
+
+1. "Root Directory" ou "Service Name":
+   → Deixe em branco ou digite: backend/
+
+2. "Framework":
+   → Selecione: Node.js (ou NestJS se aparecer)
+
+3. "Build command":
+   → npm run build
+
+4. "Start command":
+   → node dist/src/main.js
+
+════════════════════════════════════════════════════════════════════════════════
+
+PASSO 5: ADICIONAR VARIÁVEIS DE AMBIENTE ⚠️ IMPORTANTE!
+
+O Railway vai pedir as variáveis de ambiente. Preencha assim:
+
+┌─ DATABASE_URL
+│  Valor: file:./dev.db
+│
+├─ PORT
+│  Valor: 3001
+│
+├─ NODE_ENV
+│  Valor: production
+│
+├─ JWT_ACCESS_SECRET
+│  Valor: sua-chave-secreta-aqui-123456
+│
+├─ JWT_REFRESH_SECRET
+│  Valor: outra-chave-secreta-aqui-789012
+│
+├─ COOKIE_SECRET
+│  Valor: cookie-secret-aqui-345678
+│
+└─ CORS_ORIGIN
+   Valor: [COLE A URL DO VERCEL AQUI]
+   Exemplo: https://risk-compass.vercel.app
+
+════════════════════════════════════════════════════════════════════════════════
+
+IMPORTANTE: COPIAR VALORES
+
+Para não esquecer suas chaves:
+
+1. Abra seu editor de texto (Notepad)
+2. Crie essas chaves agora:
+
+JWT_ACCESS_SECRET=seu-valor-aleatorio-aqui
+JWT_REFRESH_SECRET=seu-outro-valor-aqui
+COOKIE_SECRET=seu-cookie-secret-aqui
+
+Você pode usar: https://generate-random.org/ para gerar valores aleatórios
+(copie uma string aleatória longa)
+
+════════════════════════════════════════════════════════════════════════════════
+
+PASSO 6: FAZER DEPLOY
+
+1. Após preencher as variáveis, clique: "Deploy" ou "Deploy Project"
+2. Railway começará a compilar e fazer deploy
+3. Você verá mensagens de progresso
+4. Quando terminar, verá: "Deployment Status: Success"
+
+════════════════════════════════════════════════════════════════════════════════
+
+PASSO 7: COPIAR URL DO RAILWAY
+
+Após o deploy bem-sucedido:
+
+1. Procure por "URL" ou "Deployment URL" no dashboard
+2. Você verá algo como: https://your-backend-xyz.railway.app
+3. Copie esta URL
+4. Guarde-a para o próximo passo
+
+════════════════════════════════════════════════════════════════════════════════
+
+PASSO 8: CONECTAR VERCEL + RAILWAY
+
+Agora que você tem:
+✓ URL do Vercel: https://risk-compass.vercel.app
+✓ URL do Railway: https://seu-backend-xyz.railway.app
+
+Volte ao Vercel e:
+
+1. Acesse: https://vercel.com/dashboard
+2. Clique no projeto: "risk-compass"
+3. Vá para: Settings → Environment Variables
+4. Adicione uma nova variável:
+   Nome: NEXT_PUBLIC_API_BASE_URL
+   Valor: [COLE A URL DO RAILWAY AQUI]
+   
+5. Clique: "Save"
+6. Clique: "Redeploy" (para aplicar a mudança)
+
+════════════════════════════════════════════════════════════════════════════════
+
+✅ DEPLOY COMPLETO!
+
+Agora você tem:
+
+Frontend: https://risk-compass.vercel.app
+Backend:  https://seu-backend-xyz.railway.app
+
+Teste acessando o frontend e vendo se consegue se conectar ao backend!
+
+════════════════════════════════════════════════════════════════════════════════
+
+🧪 TESTAR O SISTEMA
+
+1. Abra: https://seu-url-vercel.vercel.app
+2. Você deve ver a página inicial do Risk Compass
+3. Tente fazer login (os componentes devem estar funcionando)
+4. Se ver erro de conexão, revise as variáveis de ambiente
+
+════════════════════════════════════════════════════════════════════════════════
+
+📝 TROUBLESHOOTING:
+
+Erro: "CORS error"
+  → Verifique CORS_ORIGIN no Railway (deve ter a URL do Vercel)
+  → Verifique NEXT_PUBLIC_API_BASE_URL no Vercel (deve ter a URL do Railway)
+  → Faça redeploy em ambos
+
+Erro: "Build failed"
+  → Verifique o log no Railway
+  → Pode ser que as dependências não foram instaladas
+  → Tente fazer rebuild
+
+Erro: "Connection refused"
+  → Backend pode não estar rodando
+  → Verifique os logs no Railway
+  → Tente redeploy
+
+Erro: "Not found"
+  → Verifique se as variáveis de ambiente estão todas preenchidas
+  → Verifique se os valores estão corretos
+
+════════════════════════════════════════════════════════════════════════════════
+
+💡 PRÓXIMOS PASSOS:
+
+1. Seu sistema está NO AR em produção! 🎉
+2. Qualquer mudança que você fizer, faça push no GitHub
+3. Vercel e Railway fazem deploy automático
+4. Configure GitHub Actions para CI/CD automático
+
+════════════════════════════════════════════════════════════════════════════════
+
+📞 SUPORTE:
+
+Se algo der errado:
+1. Verifique os logs no Vercel (Deployments → Build logs)
+2. Verifique os logs no Railway (Project → Deployments)
+3. Leia a mensagem de erro cuidadosamente
+4. Tente redeploy
+
+════════════════════════════════════════════════════════════════════════════════

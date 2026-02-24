@@ -1,0 +1,134 @@
+╔════════════════════════════════════════════════════════════════════════════╗
+║               🔍 DIAGNÓSTICO DE ERRO - RAILWAY DEPLOYMENT                  ║
+╚════════════════════════════════════════════════════════════════════════════╝
+
+Por favor, responda as seguintes perguntas para que eu possa ajudar:
+
+════════════════════════════════════════════════════════════════════════════════
+
+1. QUAL FOI O ERRO EXATO?
+
+   Copie e cole a mensagem de erro que você viu:
+   
+   _______________________________________________________________________________
+   _______________________________________________________________________________
+   _______________________________________________________________________________
+
+
+2. EM QUAL ETAPA O ERRO ACONTECEU?
+
+   ☐ Na criação do projeto no Railway
+   ☐ Ao conectar com GitHub
+   ☐ Durante a configuração de variáveis de ambiente
+   ☐ Durante o build/compilação
+   ☐ Durante o deploy
+   ☐ Depois que o deploy terminou
+
+
+3. VOCÊ CONSEGUE VER OS LOGS NO RAILWAY?
+
+   ☐ Sim, vi uma mensagem de erro nos logs
+   ☐ Não consegui acessar os logs
+   ☐ Os logs não mostram nada específico
+
+
+4. QUAL ERA A ÚLTIMA LINHA DOS LOGS ANTES DO ERRO?
+
+   Copie as últimas 5 linhas dos logs do Railway:
+   
+   _______________________________________________________________________________
+   _______________________________________________________________________________
+   _______________________________________________________________________________
+
+
+5. O VERCEL JÁ FOI DEPLOYADO COM SUCESSO?
+
+   ☐ Sim, e está funcionando
+   ☐ Sim, mas com erro
+   ☐ Ainda não fiz o deploy do Vercel
+
+
+6. VOCÊ CONSEGUE ACESSAR A URL DO RAILWAY?
+
+   ☐ Sim, abre mas com erro
+   ☐ Não abre / timeout
+   ☐ Não consigo acessar
+
+
+════════════════════════════════════════════════════════════════════════════════
+
+ERROS MAIS COMUNS E SOLUÇÕES:
+
+🔴 "Build failed" / "Command not found: npm"
+   → Problema: Node.js/npm não está instalado
+   → Solução: Railway detecta automaticamente, verifique se está usando Node 18+
+
+🔴 "DATABASE_URL error" / "Cannot read database"
+   → Problema: A variável de ambiente não está sendo reconhecida
+   → Solução: Verifique se digitou exatamente "DATABASE_URL"
+   → Se não aparecer a opção de variáveis, refresque a página
+
+🔴 "Port 3001 already in use"
+   → Problema: Outra aplicação está usando a porta
+   → Solução: Mude PORT para 3000 ou 8000 no Railway
+
+🔴 "CORS error" / "Cannot access from Vercel"
+   → Problema: CORS_ORIGIN não está configurado corretamente
+   → Solução: Copie EXATAMENTE a URL do Vercel (com https://)
+
+🔴 "Cannot find module" / "Missing dependencies"
+   → Problema: npm install não foi executado
+   → Solução: Railway faz isso automaticamente, mas veja se há erros
+
+🔴 "Memory limit exceeded"
+   → Problema: Aplicação usando muita memória
+   → Solução: Upgrade do plano Railway ou otimizar código
+
+🔴 "Process exited with code 1"
+   → Problema: Erro fatal na inicialização
+   → Solução: Veja os logs detalhados acima
+
+════════════════════════════════════════════════════════════════════════════════
+
+COMO VER OS LOGS NO RAILWAY:
+
+1. Acesse: https://railway.app/dashboard
+2. Selecione o projeto: risk-compass
+3. Clique na aba "Deployments"
+4. Clique no deploy mais recente
+5. Clique em "Logs"
+6. Você verá o histórico completo de erros
+
+════════════════════════════════════════════════════════════════════════════════
+
+VERIFICAÇÃO PASSO A PASSO:
+
+☐ 1. Todas as 7 variáveis de ambiente foram adicionadas?
+      DATABASE_URL ✓
+      PORT ✓
+      NODE_ENV ✓
+      JWT_ACCESS_SECRET ✓
+      JWT_REFRESH_SECRET ✓
+      COOKIE_SECRET ✓
+      CORS_ORIGIN ✓
+
+☐ 2. As valores estão corretos?
+      DATABASE_URL = file:./dev.db (SEM ESPAÇOS)
+      PORT = 3001 (SEM aspas)
+      CORS_ORIGIN = https://seu-vercel-url.vercel.app (COM https://)
+
+☐ 3. O repositório GitHub está funcionando?
+      → Teste em: https://github.com/DEVmattosG/risk-compass
+
+☐ 4. O backend compila localmente?
+      → Execute: cd backend ; npm run build
+
+════════════════════════════════════════════════════════════════════════════════
+
+PRÓXIMAS AÇÕES:
+
+1. Copie as respostas acima
+2. Cole as informações de erro aqui
+3. Vou ajudar a resolver o problema específico
+
+════════════════════════════════════════════════════════════════════════════════
